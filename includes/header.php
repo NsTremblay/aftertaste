@@ -1,11 +1,5 @@
 <?php
-$dbcnx = pg_connect("host=web0.site.uottawa.ca port=15432 dbname=ntrem018 user=ntrem018 password=Bru!nsma2574");
-$result = pg_query($dbcnx, "SELECT * FROM location");
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-$id = $_GET['userid'];
+
 
 ?>
 
@@ -70,20 +64,7 @@ $id = $_GET['userid'];
 </ul>
 
 <?php
-if(!$_GET['userid']){
-echo "<form class=\"navbar-form navbar-right\" role=\"search\" action=\"login.php\" method=\"post\" style=\"margin-bottom: 0;\">
-    <div class=\"form-group\">
-        <input type=\"text\" class=\"form-control\"  name=\"ml-username\" placeholder=\"Username\" size=\"14\">
-    </div>
-    <div class=\"form-group\">
-        <input type=\"password\" class=\"form-control\"  name=\"pwd-password\" placeholder=\"Password\" size=\"14\">
-    </div>
-    <button type=\"submit\" id=\"submit\" name=\"submit\" class=\"btn btn-default\" size=\"8\">Log in</button>
-</form>";
-}else{
-  $id = $_GET["userid"];
-  echo "<br>Welcome ".pg_fetch_result(pg_query($dbcnx,"SELECT name FROM rater WHERE userid=$id"), 0, "name");
-}
+
 
 
 ?>
