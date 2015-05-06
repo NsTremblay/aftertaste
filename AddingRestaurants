@@ -1,0 +1,20 @@
+INSERT INTO location VALUES mname="J N Pizza Restaurant & Sports Bar", pnumber="", saddress="", hopen="", hclose="", restaurantid= (SELECT RestID FROM restaurant WHERE mname="J N Pizza Restaurant & Sports Bar")
+
+insert into restaurant VALUES name="J N Pizza Restaurant & Sports Bar"
+
+INSERT INTO restaurant VALUES name="Prinzo Lunch Buffet";
+INSERT INTO restaurant VALUES name="The Greek Souvlaki Shack";
+INSERT INTO restaurant VALUES name="Bread & Sons Bakery";
+INSERT INTO restaurant VALUES name="Angry Dragonz";
+INSERT INTO restaurant VALUES name="Backdrop Food & Drink";
+INSERT INTO restaurant VALUES name="Grounded Kitchen & Coffeehouse";
+INSERT INTO restaurant VALUES name="Clover Food Drink";
+INSERT INTO restaurant VALUES name="North and Navy";
+INSERT INTO restaurant VALUES name="Afghani Kabob Express";
+INSERT INTO restaurant VALUES name="Japanese Village";
+INSERT INTO restaurant VALUES name="Vetta Osteria";
+INSERT INTO restaurant VALUES name="C'est Japon à Suisha";
+INSERT INTO restaurant VALUES name="Caribbean Sizzler";
+INSERT INTO restaurant VALUES name="Orchid Sushi";
+INSERT INTO restaurant VALUES name="Aroma Small Plates and Wine";
+INSERT INTO restaurant VALUES name="Hy's Steakhouse";
