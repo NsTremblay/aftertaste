@@ -10,11 +10,11 @@ sub compute {
   my ($operator, $x, $y) = @_;
  
   if ($operator eq '+') {
-      return $x + $y + 1;
+      return $x + $y;
   } elsif ($operator eq '-') {
-      return $x - $y + 1;
+      return $x - $y ;
   } elsif ($operator eq '*') {
-      return $x - $y+1;
+      return $x - $y;
   }
 }
  
