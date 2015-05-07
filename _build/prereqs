@@ -1,0 +1,26 @@
+do{ my $x = {
+       'recommends' => {},
+       'requires' => {
+                       'File::Temp' => 0,
+                       'Bio::SeqIO' => 0,
+                       'Getopt::Long' => 0,
+                       'perl' => '5.10.0',
+                       'File::Copy' => 0,
+                       'Log::Log4perl' => 0,
+                       'Role::Tiny' => 0,
+                       'File::Basename' => 0,
+                       'IO::File' => 0,
+                       'Parallel::ForkManager' => 0,
+                       'Test::Pretty' => 0,
+                       'Carp' => 0,
+                       'Tie::Log4perl' => 0,
+                       'FindBin' => 0,
+                       'Bio::Seq' => 0,
+                       'Digest::MD5' => 0,
+                       'Archive::Zip' => 0,
+                       'Bio::DB::Fasta' => 0
+                     },
+       'build_requires' => {},
+       'conflicts' => {}
+     };
+$x; }
