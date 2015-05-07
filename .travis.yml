@@ -1,4 +1,6 @@
 language: perl
 perl:
   - "5.14"
-script: "perl Build.PL && ./Build && travis_wait ./Build test && npm i -g jasmine-node"
+before_install:
+  -npm i -g jasmine-node
+script: "perl Build.PL && ./Build && travis_wait ./Build test && npm test"
