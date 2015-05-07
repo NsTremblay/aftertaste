@@ -1,5 +1,7 @@
 {
-  "name": "First test with travis",
+
+  "private": true,
+  "name": "First-test-with-travis",
   "version": "0.1.1",
   "description": "This is the very first test on aftertaste with travis",
   "repository": {
