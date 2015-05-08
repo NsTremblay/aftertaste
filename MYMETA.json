@@ -1,0 +1,47 @@
+{
+   "abstract" : "AfterTaste: little Restaurant project",
+   "author" : [
+      "Nicolas Tremblay <ns.tremblay@gmail.com>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Aftertaste",
+   "prereqs" : {
+      "runtime" : {
+         "requires" : {
+            "Archive::Zip" : "0",
+            "Bio::DB::Fasta" : "0",
+            "Bio::Seq" : "0",
+            "Bio::SeqIO" : "0",
+            "Carp" : "0",
+            "Digest::MD5" : "0",
+            "File::Basename" : "0",
+            "File::Copy" : "0",
+            "File::Temp" : "0",
+            "FindBin" : "0",
+            "Getopt::Long" : "0",
+            "IO::File" : "0",
+            "Log::Log4perl" : "0",
+            "Parallel::ForkManager" : "0",
+            "Role::Tiny" : "0",
+            "Test::Pretty" : "0",
+            "Tie::Log4perl" : "0",
+            "perl" : "v5.10.0"
+         }
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "license" : [
+         "http://dev.perl.org/licenses/"
+      ]
+   },
+   "version" : "1"
+}

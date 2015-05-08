@@ -5,7 +5,7 @@
 <div class="container">
 <div class="jumbotron">
 <h1>Welcome,</h1>
-<p>Removed the mambo Jambo Rate and share your Ottawa dining experience with the Aftertaste community. <br> Together we can discover the best restaurants in the nation's capital. </p>
+<p> Te mambo Jambo Rate and share your Ottawa dining experience with the Aftertaste community. <br> Together we can discover the best restaurants in the nation's capital. </p>
 <p><a class="btn btn-primary btn-lg" href="#" role="button" data-toggle="modal" data-target="#myModal">Sign up</a></p>
 </div>
 </div>
