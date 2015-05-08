@@ -1,0 +1,127 @@
+It's the first time i'm writting a post, the format might be off, sorry about that
+
+This doc explains how the testing happens and the things that now happen when a push occurs to a branch. The dummy repo that was used to set up the testing can be found here https://github.com/NsTremblay/aftertaste
+
+The testing system has a couple of parts:
+*Travis (server that takes care of the build to test methods, runs the perl testing and Jasmine)
+*Jasmine (Will run the javascript and coffee tests and give a report on the tests run)
+*The perl build file
+
+##Travis
+The server that takes care of running the tests in the project. Travis is called by a hook in the github account that is triggered every time a push is sent to the github account. This hook is set up automatically by Travis.
+Travis does a couple of things, 
+1.make a vm on which the tests will run
+1.install all the dependencies required for the testing (in our case install perl)
+1.Run the tests (basically show the output of the vm command line) This is useful for debugging the .travis.yml file. http://lint.travis-ci.org/ is also a useful tool to see if the basics of the .travis.yml file are in order.
+
+###The configuration files
+*.travis.yml
+The current file looks like this
+
+language: perl
+perl:
+  - "5.14"
+script: "perl Build.PL && ./Build && travis_wait ./Build test && npm test"
+
+The first 2 fields are self explanatory. Script, the first part is taken from the Panseq project https://github.com/chadlaing/Panseq/blob/master/.travis.yml
+The last '&& npm test' is the Jasmine testing part, it executes once the perl tests are done. 'npm test' calls the package.json file in the root directory (important that the name part be written without any spaces, this throws an error)
+
+{
+
+  "private": true,
+  "name": "First-test-with-travis",
+  "version": "0.1.1",
+  "description": "This is the very first test on aftertaste with travis",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NsTremblay/aftertaste.git"
+  },
+  "author": "Nicolas Tremblay <ns.tremblay@me.com>",
+  "maintainers": "Nicolas Tremblay <ns.tremblay@gmail.com>",
+  "licenses": ["MIT"],
+  "dependencies": {
+    "jasmine-node": ">=1.14.3"
+  },
+  "scripts": {
+    "test": "jasmine-node *.spec.js && jasmine-node *.spec.coffee"
+  }
+}
+
+Under the scripts section, the test part of the json is executed by the system. In this case any test files with the .spec.js and .spec.coffee extensions in the curretn folder will be executed by Jasmine
+
+##Jasmine
+The testing framework for the coffeescript and javascript. Jasmine can be installed with npm 'npm install -g jasmine-node'
+Once Jasmine is installed, files having the .spec.coffee or files having the .spec.js can be run by writting npm test (providing the package.json file is present) or by writting directly jasmine-node *.spec.js && jasmine-node *.spec.coffee. In both cases this is the output of the tests.
+
+> First-test-with-travis@0.1.1 test /var/www/html/aftertaste/aftertaste
+> jasmine-node *.spec.js && jasmine-node *.spec.coffee
+.
+Finished in 0.006 seconds
+1 test, 1 assertion, 0 failures, 0 skipped
+
+Finished in 0.001 seconds
+0 tests, 0 assertions, 0 failures, 0 skipped
+
+Code for the javascript test is
+
+describe('JavaScript addition operator', function () {
+    it('adds two numbers together', function () {
+        expect(1 + 2).toEqual(3);
+    });
+});
+
+And the coffeescript
+
+describe "Simple test for coffee ", ->
+	it "Adds two numbers and sees it the addition works", ->
+		expect(1+2).toEqual 3
+
+this might be useful http://brizzled.clapper.org/blog/2011/10/04/jasmine-and-coffee/
+
+##The perl build
+A great source for writting the tests is http://perlmaven.com/testing-a-simple-perl-module
+
+###The files
+Again taken from Panseq
+Build.PL
+
+#!/usr/bin/env perl
+
+use warnings;
+use strict;
+use Module::Build;
+use IO::File;
+
+my $build=Module::Build->new(
+	module_name => 'Aftertaste',
+	dist_version => '1',
+	license => 'perl',
+	dist_abstract => 'AfterTaste: little Restaurant project',
+	dist_author => 'Nicolas Tremblay <ns.tremblay@gmail.com>',
+	requires =>{
+		'Carp' => 0,
+		'perl' => '5.10.0',
+		'Parallel::ForkManager' => 0,
+		'Log::Log4perl' => 0,
+		'FindBin' => 0,
+		'IO::File' => 0,
+		'File::Copy' => 0,
+		'Role::Tiny' => 0,
+		'Bio::SeqIO' => 0,
+		'Bio::DB::Fasta' => 0,
+		'File::Temp' => 0,
+		'Bio::Seq' => 0,
+		'File::Basename'=>0,
+		'Tie::Log4perl'=>0,
+		'Archive::Zip'=>0,
+		'Test::Pretty'=>0,
+		'Getopt::Long'=>0,
+		'Digest::MD5'=>0
+	}
+);
+$build->create_build_script();
+
+Simply describes the settings for the perl testing.
+Calling the 'perl Build.PL && ./Build && travis_wait ./Build test' is all that is needed to run the tests on the travis server. Running on the machine is simply perl Build.PL && ./Build && travis_wait ./Build test
+
+I think that's about it. If I'm missing something please let me know

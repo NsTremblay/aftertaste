@@ -12,7 +12,7 @@ sub compute {
   if ($operator eq '+') {
       return $x + $y;
   } elsif ($operator eq '-') {
-      return $x - $y;
+      return $x - $y ;
   } elsif ($operator eq '*') {
       return $x - $y;
   }
